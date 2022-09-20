@@ -25,3 +25,21 @@ jobs:
 
       - name: Test
         run: dotnet test --no-restore --verbosity normal
+
+      - name: Publish
+        run: dotnet publish -c Release -o website
+        working-directory: ./
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: website
+          path: ./website/**
+          if-no-files-found: error
+
+      - name: Upload a build artifact
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: iac
+          path: ./infrastructure.bicep
+          if-no-files-found: error
