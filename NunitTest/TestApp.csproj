@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Novice_to_dangerous</RootNamespace>
+    <RootNamespace>TestApp</RootNamespace>
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
