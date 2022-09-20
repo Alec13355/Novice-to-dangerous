@@ -1,0 +1,27 @@
+on:
+  push:
+    branches: [main]
+  pull_requests:
+    branches: [main]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .Net Core SDK
+        uses: actions/setup-dotnet@v2
+
+      - name: install dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test --no-restore --verbosity normal
